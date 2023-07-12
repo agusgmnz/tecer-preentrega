@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Servicio de Autos</h1>
+    <form id="carForm">
+      <label for="carModel">Modelo de Auto:</label>
+      <select id="carModel">
+        <option value="car1">Nissan Versa 2022</option>
+
+        <option value="car2">Audi a5 2018</option>
+
+        <option value="car3">Mercedez gtr 2020</option>
+      </select>
+      <br />
+
+      <label for="cuotas">Cuotas:</label>
+
+      <input type="number" id="cuotas" min="1" />
+
+      <br />
+
+      <button type="button" onclick="calculateTotal()">Calcular Total</button>
+    </form>
+    <div id="total"></div>
+
+    <h2>Califica como fue tu experiencia</h2>
+
+    <div id="stars" class="stars">
+    
+   
+        <span class="star" onclick="setRating(1)">&#9733;</span>
+            
+           
+        <span class="star" onclick="setRating(2)">&#9733;</span>
+            
+            
+        
+           
+        <span class="star" onclick="setRating(3)">&#9733;</span>
+            
+            
+        
+           
+        <span class="star" onclick="setRating(4)">&#9733;</span>
+            
+            
+        
+           
+        <span class="star" onclick="setRating(5)">&#9733;</span>
+          
+         
+        </div>
+          
+          
+        
+         
+        <button onclick="submitRating()">Enviar</button>
+    <script src="./main.js"></script>
+  </body>
+</html>
