@@ -1,41 +1,42 @@
-const carForm = document.getElementById("carForm");
-const carModelSelect = document.getElementById("carModel");
-const cuotasInput = document.getElementById("cuotas");
-const totalDiv = document.getElementById("total");
+  const form = document.getElementById('simulatorForm');
+  const resultContainer = document.getElementById('resultContainer');
+  const resultElement = document.getElementById('result');
+  const loanListElement = document.getElementById('loanList');
 
-const carData = {
-  car1: 4000000,
-  car2: 15000000,
-  car3: 20000000,
-};
+  const savedLoans = JSON.parse(localStorage.getItem('loans')) || [];
 
-function calculateTotal() {
-  const carModel = carModelSelect.value;
-  const cuotas = parseInt(cuotasInput.value);
-  const precio = carData[carModel];
+  savedLoans.forEach(loan => {
+    const listItem = document.createElement('li');
+    listItem.textContent = `Monto: $${loan.amount.toFixed(2)}, Tasa de Interés: ${loan.interestRate}%, Meses: ${loan.months}`;
+    loanListElement.appendChild(listItem);
+  });
 
-  if (precio && cuotas) {
-    const total = precio / cuotas;
-    totalDiv.textContent = `El valor de cada cuota (por mes) del auto elegido es de: $${total.toFixed(
-      2
-    )}`;
+  form.addEventListener('submit', function(event) {
+    event.preventDefault(); 
+    const amount = parseFloat(document.getElementById('amount').value);
+    const interestRate = parseFloat(document.getElementById('interestRate').value);
+    const months = parseInt(document.getElementById('months').value);
 
-    const data = { carModel, cuotas, total };
-    localStorage.setItem("carData", JSON.stringify(data));
+    const monthlyPayment = calculateMonthlyPayment(amount, interestRate, months);
+
+    resultElement.innerHTML = `La cuota mensual es: $${monthlyPayment.toFixed(2)}`;
+    resultContainer.style.display = 'block';
+
+    const loan = { amount, interestRate, months };
+    savedLoans.push(loan);
+    localStorage.setItem('loans', JSON.stringify(savedLoans));
+
+    const listItem = document.createElement('li');
+    listItem.textContent = `Monto: $${loan.amount.toFixed(2)}, Tasa de Interés: ${loan.interestRate}%, Meses: ${loan.months}`;
+    loanListElement.appendChild(listItem);
+  });
+
+  function calculateMonthlyPayment(amount, interestRate, months) {
+    const monthlyInterestRate = interestRate / 100 / 12;
+    const numerator = amount * monthlyInterestRate * (1 + monthlyInterestRate) ** months;
+    const denominator = (1 + monthlyInterestRate) ** months - 1;
+    return numerator / denominator;
   }
-}
-
-window.addEventListener("load", function () {
-  const savedData = localStorage.getItem("carData");
-  if (savedData) {
-    const data = JSON.parse(savedData);
-    carModelSelect.value = data.carModel;
-    cuotasInput.value = data.cuotas;
-    totalDiv.textContent = `El valor de cada cuota es: $${data.total.toFixed(
-      2
-    )}`;
-  }
-});
 
 let selectedRating = 0;
 

@@ -7,27 +7,28 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>Servicio de Autos</h1>
-    <form id="carForm">
-      <label for="carModel">Modelo de Auto:</label>
-      <select id="carModel">
-        <option value="car1">Nissan Versa 2022</option>
+    <h1>Simulador de Cuotas</h1>
 
-        <option value="car2">Audi a5 2018</option>
+  <form id="simulatorForm">
+    <label for="amount">Monto:</label>
+    <input type="number" id="amount" required>
+    <br>
 
-        <option value="car3">Mercedez gtr 2020</option>
-      </select>
-      <br />
+    <label for="interestRate">Tasa de Interés (%):</label>
+    <input type="number" id="interestRate" required>
+    <br>
 
-      <label for="cuotas">Cuotas:</label>
+    <label for="months">Cantidad de Meses:</label>
+    <input type="number" id="months" required>
+    <br>
 
-      <input type="number" id="cuotas" min="1" />
+    <button type="submit">Calcular</button>
+  </form>
 
-      <br />
-
-      <button type="button" onclick="calculateTotal()">Calcular Total</button>
-    </form>
-    <div id="total"></div>
+  <div id="resultContainer" class="result" style="display: none;">
+    <h2>Resultado:</h2>
+    <div id="result"></div>
+  </div>
 
     <h2>Califica como fue tu experiencia</h2>
 
@@ -60,7 +61,7 @@
           
         
          
-        <button onclick="submitRating()">Enviar</button>
+        <button class="estrellas" onclick="submitRating()">Enviar</button>
     <script src="./main.js"></script>
   </body>
 </html>

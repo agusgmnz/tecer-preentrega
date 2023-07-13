@@ -55,3 +55,7 @@ h2 {
 .star.selected {
   color: #ffbf00;
 }
+
+.estrellas {
+  text-align: center;
+}
