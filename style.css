@@ -1,4 +1,5 @@
 body {
+  background-color: rgb(190, 224, 254);
   font-family: Arial, sans-serif;
   padding: 20px;
 }
@@ -50,4 +51,3 @@ button {
 #message {
   margin-top: 10px;
 }
-
