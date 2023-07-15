@@ -36,26 +36,18 @@ button {
   font-weight: bold;
 }
 
-h2 {
-  text-align: center;
-  color: rgb(84, 137, 119);
-}
-
-.stars {
-  text-align: center;
-  font-size: 24px;
-}
-
 .star {
-  display: inline-block;
-  color: #ccc;
+  font-size: 24px;
   cursor: pointer;
-}
-.star:hover,
-.star.selected {
-  color: #ffbf00;
+  color: #ccc;
 }
 
-.estrellas {
-  text-align: center;
+.star:hover,
+.star:hover ~ .star {
+  color: orange;
 }
+
+#message {
+  margin-top: 10px;
+}
+
