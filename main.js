@@ -5,13 +5,15 @@ const loanListElement = document.getElementById("loanList");
 
 const savedLoans = JSON.parse(localStorage.getItem("loans")) || [];
 
-savedLoans.forEach((loan) => {
-  const listItem = document.createElement("li");
-  listItem.textContent = `Monto: $${loan.amount.toFixed(2)}, Tasa de Interés: ${
-    loan.interestRate
-  }%, Meses: ${loan.months}`;
-  loanListElement.appendChild(listItem);
-});
+if (loanListElement) {
+  savedLoans.forEach((loan) => {
+    const listItem = document.createElement("li");
+    listItem.textContent = `Monto: $${loan.amount.toFixed(
+      2
+    )}, Tasa de Interés: ${loan.interestRate}%, Meses: ${loan.months}`;
+    loanListElement.appendChild(listItem);
+  });
+}
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -58,6 +60,5 @@ function rate(rating) {
       stars[i].innerHTML = "&#9734;";
     }
   }
-
   message.textContent = "¡Gracias por calificar con " + rating + " estrellas!";
 }
