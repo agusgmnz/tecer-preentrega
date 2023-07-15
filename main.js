@@ -49,6 +49,14 @@ function calculateMonthlyPayment(amount, interestRate, months) {
   return numerator / denominator;
 }
 
+//borrar resultados
+const clearButton = document.getElementById("clearButton");
+
+clearButton.addEventListener("click", function () {
+  resultElement.innerHTML = "";
+  resultContainer.style.display = "none";
+});
+
 function rate(rating) {
   const stars = document.getElementsByClassName("star");
   const message = document.getElementById("message");
