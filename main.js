@@ -1,3 +1,4 @@
+//codigo sobre los calculos
 const form = document.getElementById("simulatorForm");
 const resultContainer = document.getElementById("resultContainer");
 const resultElement = document.getElementById("result");
@@ -53,10 +54,11 @@ function calculateMonthlyPayment(amount, interestRate, months) {
 const clearButton = document.getElementById("clearButton");
 
 clearButton.addEventListener("click", function () {
-  resultElement.innerHTML = "";
-  resultContainer.style.display = "none";
+  loanListElement.innerHTML = "";
+  localStorage.removeItem("loans");
 });
 
+//codigo de calificacion
 function rate(rating) {
   const stars = document.getElementsByClassName("star");
   const message = document.getElementById("message");
